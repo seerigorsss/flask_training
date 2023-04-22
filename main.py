@@ -1,17 +1,21 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, redirect
+from loginform import LoginForm
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
 
-@app.route('/')
-@app.route('/index/<title>')
-def index(title):
-    return render_template('base.html', title=title)
+@app.route('/success', methods=['GET', 'POST'])
+def success():
+    return render_template('success.html')
 
 
-@app.route('/training/<prof>', methods=["GET"])
-def training(prof):
-    return render_template('training.html', profession=prof)
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        return redirect('/success')
+    return render_template('login.html', title='Авторизация', form=form)
 
 
 if __name__ == '__main__':
