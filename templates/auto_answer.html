@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <link rel="stylesheet" href="./static/css/style.css">
+    <h5>{{ "Фамилия" }}: {{ values["surname"] }}</h5>
+    <h5>{{ "Имя" }}: {{ values["name"] }}</h5>
+    <h5>{{ "Образование" }}: {{ values["education"] }}</h5>
+    <h5>{{ "Профессия" }}: {{ values["profession"] }}</h5>
+    <h5>{{ "Пол" }}: {{ values["sex"] }}</h5>
+    <h5>{{ "Мотивация" }}: {{ values["motivation"] }}</h5>
+    <h5>{{ "Готовы остаться на Марсе" }}? {{ values["ready"] }}</h5>
+
+{% endblock %}
