@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Оформление каюты</h2>
+    {% set color_male = "#0000ff" %}
+    {% set color_kid_male = "#3333ff" %}
+    {% set color_female = "#ff0000" %}
+    {% set color_kid_female = "#ff3333" %}
+    {% if age > 21 %}
+        {% set image_name = "old_alien.png" %}
+        {% if sex == "male" %}
+            {% set color = color_male %}
+        {% else %}
+            {% set color = color_female %}
+        {% endif %}
+    {% else %}
+        {% set image_name = "kid_alien.png" %}
+        {% if sex == "male" %}
+            {% set color = color_kid_male %}
+        {% else %}
+            {% set color = color_kid_female %}
+        {% endif %}
+    {% endif %}
+    <div class="container">
+        <div class="row">
+            <div class="col-100">
+                <table class="table table-image">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Цвет стен</th>
+                        <th scope="col">Эмблема</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="w-50" style="background-color: {{ color }}">
+                        </td>
+                        <td class="w-50">
+                            <img src="{{ url_for('static', filename='img/' + image_name) }}"
+                                 class="img-fluid img-thumbnail" alt="alien image">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
