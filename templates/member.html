@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% set file = json[index] %}
+    {% set name = file["name"] %}
+    {% set surname = file["surname"] %}
+    {% set link_photo = file["photo_link"] %}
+    <h2>{{ name }} {{ surname }}</h2>
+    <img src="{{ link_photo }}" alt="member logo" style="width: 200px; height: 200px">
+    <p>{{ ", ".join(professions) }}</p>
+{% endblock %}
